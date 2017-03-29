@@ -1,0 +1,59 @@
+/**
+ * Created by Алекс on 29.03.2017.
+ */
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.concurrent.TimeUnit;
+
+import static junit.framework.TestCase.assertNotNull;
+
+//Site Rosetka, Select name devices Smartfon
+
+public class JunitTest {
+    public WebDriver driver;
+
+    @Before
+    public void setupTest() {
+        System.setProperty("webdriver.chrome.driver", "F:\\drivers\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        WebDriver.Timeouts timeouts = driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+    }
+
+    @Test
+    public void RosetkaTest() {
+        driver.get("http://rozetka.com.ua/");
+        WebElement telefonyTvEhlektronika;
+        telefonyTvEhlektronika = By.xpath(".//*[@id='3361']//*[@ href='http://rozetka.com.ua/telefony-tv-i-ehlektronika/c4627949/']").findElement(driver);
+        telefonyTvEhlektronika.click();
+        System.out.println("Open page is:" + telefonyTvEhlektronika.getText());
+
+        WebElement telefony = driver.findElement(By.xpath(".//*[@ href='http://rozetka.com.ua/telefony/c4627900/']"));
+        telefony.click();
+        System.out.println("Open page is: " + telefony.getText());
+
+        WebElement smartfon = driver.findElement(By.xpath(".//*[@ href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/']"));
+        smartfon.click();
+        System.out.println("Open page is: " + smartfon.getText());
+
+        WebElement NameDevices;
+        NameDevices = By.xpath(".//*[@ id='menu_categories_left']/li[1]//*[@ href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/>Все смартфоны</']").findElement(driver);
+        NameDevices.click();
+        System.out.println("Open page is: " + NameDevices.getText());
+        assertNotNull("Open page is not null " + NameDevices.getText());
+
+    }
+
+    @After
+    public void Finish() {
+        driver.quit();
+
+    }
+}
