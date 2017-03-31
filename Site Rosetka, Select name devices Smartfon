@@ -31,7 +31,7 @@ public class JunitTest {
     public void RosetkaTest() {
         driver.get("http://rozetka.com.ua/");
         WebElement telefonyTvEhlektronika;
-        telefonyTvEhlektronika = By.xpath(".//*[@id='3361']//*[@ href='http://rozetka.com.ua/telefony-tv-i-ehlektronika/c4627949/']").findElement(driver);
+        telefonyTvEhlektronika = driver.findElement(By.xpath(".//*[@id='3361']//*[@ href='http://rozetka.com.ua/telefony-tv-i-ehlektronika/c4627949/']"));
         telefonyTvEhlektronika.click();
         System.out.println("Open page is:" + telefonyTvEhlektronika.getText());
 
@@ -43,8 +43,7 @@ public class JunitTest {
         smartfon.click();
         System.out.println("Open page is: " + smartfon.getText());
 
-        WebElement NameDevices;
-        NameDevices = By.xpath(".//*[@ id='menu_categories_left']/li[1]//*[@ href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/>Все смартфоны</']").findElement(driver);
+        WebElement NameDevices = (WebElement) driver.findElements(By.xpath(".//*[@ href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/']"));
         NameDevices.click();
         System.out.println("Open page is: " + NameDevices.getText());
         assertNotNull("Open page is not null " + NameDevices.getText());
@@ -54,6 +53,6 @@ public class JunitTest {
     @After
     public void Finish() {
         driver.quit();
-
+        
     }
 }
