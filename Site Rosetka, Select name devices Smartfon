@@ -36,7 +36,7 @@ public class JunitTest {
         System.out.println("Open page is:" + telefonyTvEhlektronika.getText());
         telefonyTvEhlektronika.click();
 
-        WebElement telefony = driver.findElement(By.xpath(".//*a<[@ href='http://rozetka.com.ua/telefony/c4627900/']"));
+        WebElement telefony = driver.findElement(By.xpath(".//a[@ href='http://rozetka.com.ua/telefony/c4627900/']"));
         System.out.println("Open page is: " + telefony.getText());
         telefony.click();
 
