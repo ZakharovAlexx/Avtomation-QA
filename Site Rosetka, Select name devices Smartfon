@@ -32,20 +32,20 @@ public class JunitTest {
     public void RosetkaTest() {
         driver.get("http://rozetka.com.ua/");
         WebElement telefonyTvEhlektronika;
-        telefonyTvEhlektronika = driver.findElement(By.xpath(".//*[@ href='http://rozetka.com.ua/telefony-tv-i-ehlektronika/c4627949/']"));
+        telefonyTvEhlektronika = driver.findElement(By.xpath(".//*[@href='http://rozetka.com.ua/telefony-tv-i-ehlektronika/c4627949/']"));
         System.out.println("Open page is:" + telefonyTvEhlektronika.getText());
         telefonyTvEhlektronika.click();
 
-        WebElement telefony = driver.findElement(By.xpath(".//a[@ href='http://rozetka.com.ua/telefony/c4627900/']"));
+        WebElement telefony = driver.findElement(By.xpath(".//a[@href='http://rozetka.com.ua/telefony/c4627900/']"));
         System.out.println("Open page is: " + telefony.getText());
         telefony.click();
 
-        WebElement smartfon = driver.findElement(By.xpath(".//*[@ href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/']"));
+        WebElement smartfon = driver.findElement(By.xpath(".//*[@href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/']"));
         System.out.println("Open page is: " + smartfon.getText());
         smartfon.click();
 
         List<WebElement>
-        NameDevices = driver.findElements(By.xpath(".//*[@ href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/']"));
+        NameDevices = driver.findElements(By.xpath(".//*[@href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/']"));
         for (WebElement element:NameDevices) {
             System.out.println("Open page is: " + element.getText());
             assertNotNull("Open page is not null ", element.getText());
