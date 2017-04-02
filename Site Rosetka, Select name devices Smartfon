@@ -1,4 +1,4 @@
-/**
+*
  * Created by Алекс on 29.03.2017.
  */
 
@@ -10,9 +10,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static junit.framework.TestCase.assertNotNull;
+import static org.junit.Assert.assertNotNull;
 
 //Site Rosetka, Select name devices Smartfon
 
@@ -31,28 +32,31 @@ public class JunitTest {
     public void RosetkaTest() {
         driver.get("http://rozetka.com.ua/");
         WebElement telefonyTvEhlektronika;
-        telefonyTvEhlektronika = driver.findElement(By.xpath(".//*[@id='3361']//*[@ href='http://rozetka.com.ua/telefony-tv-i-ehlektronika/c4627949/']"));
-        telefonyTvEhlektronika.click();
+        telefonyTvEhlektronika = driver.findElement(By.xpath(".//*[@ href='http://rozetka.com.ua/telefony-tv-i-ehlektronika/c4627949/']"));
         System.out.println("Open page is:" + telefonyTvEhlektronika.getText());
+        telefonyTvEhlektronika.click();
 
-        WebElement telefony = driver.findElement(By.xpath(".//*[@ href='http://rozetka.com.ua/telefony/c4627900/']"));
-        telefony.click();
+        WebElement telefony = driver.findElement(By.xpath(".//*a<[@ href='http://rozetka.com.ua/telefony/c4627900/']"));
         System.out.println("Open page is: " + telefony.getText());
+        telefony.click();
 
         WebElement smartfon = driver.findElement(By.xpath(".//*[@ href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/']"));
-        smartfon.click();
         System.out.println("Open page is: " + smartfon.getText());
+        smartfon.click();
 
-        WebElement NameDevices = (WebElement) driver.findElements(By.xpath(".//*[@ href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/']"));
-        NameDevices.click();
-        System.out.println("Open page is: " + NameDevices.getText());
-        assertNotNull("Open page is not null " + NameDevices.getText());
+        List<WebElement>
+        NameDevices = driver.findElements(By.xpath(".//*[@ href='http://rozetka.com.ua/mobile-phones/c80003/filter/preset=smartfon/']"));
+        for (WebElement element:NameDevices) {
+            System.out.println("Open page is: " + element.getText());
+            assertNotNull("Open page is not null ", element.getText());
+            element.click();
+        }
+
 
     }
 
     @After
     public void Finish() {
         driver.quit();
-        
     }
 }
