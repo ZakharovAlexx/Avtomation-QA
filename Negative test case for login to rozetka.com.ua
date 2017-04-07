@@ -65,14 +65,21 @@ public class Main {
 
         public void passwordInput(String s) {
         }
+
         public void loginInput(String s) {
         }
 
         public void loginInput() {
         }
+
         public void loginEnterPageOpen() {
         }
+
+        public boolean loginPageEnter() {
+            return false;
+        }
     }
+
 }
 package LoginEnterPage;
 
