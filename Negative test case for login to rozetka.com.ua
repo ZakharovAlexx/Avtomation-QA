@@ -37,7 +37,7 @@ public class Main {
 
                     rozetkaLoginEnterPage loginEnterPage = new rozetkaLoginEnterPage(getWebDriver());
                     loginEnterPage.loginEnterPageOpen();
-                    loginEnterPage.loginInput();
+                    loginEnterPage.loginInput("Alex");
                     loginEnterPage.passwordInput("13579");
                     LoginEnterPage.click();
 
